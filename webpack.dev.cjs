@@ -1,18 +1,12 @@
-const path = require('path');
 
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const buildPath = path.resolve(__dirname, '.xui/output/build');
-
 module.exports = {
-    devtool: 'source-map',
-    entry: './.xui/output/temp/src/index.js',
-    output: {
-        filename: '[name].[hash:20].js',
-        path: buildPath
-    },
-    node: {
-        fs: 'empty'
+    entry: './.xui/output/temp/index.js',
+    devServer: {
+        port: 3000,
+        static: path.join(__dirname, ".xui/output/temp/")
     },
     module: {
         rules: [
@@ -29,8 +23,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './.xui/index.html',
-            // Inject the js bundle at the end of the body of the given template
-            inject: 'body',
+            inject: true
         })
     ]
-};
+}
