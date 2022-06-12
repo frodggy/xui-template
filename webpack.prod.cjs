@@ -2,7 +2,7 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const buildPath = path.resolve(__dirname, '.xui/output/build');
+const buildPath = cwd() + '/.xui/output/build'
 
 module.exports = {
     entry: './.xui/output/temp/index.js',
